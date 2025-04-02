@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Liquid Distort Text Effect</title>
+    <title>Liquid Distort Text Effect - Hover with Padding</title>
     <style>
         body {
             background: #111;
@@ -12,38 +12,71 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
+            cursor: pointer;
+            /* Optional: change cursor on hover */
+        }
+
+        canvas {
+            pointer-events: auto;
         }
     </style>
 </head>
 
 <body>
-    <!-- Load Three.js first -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- Then load Blotter.js from unpkg -->
-    <script src="https://unpkg.com/blotter@0.1.0/build/Blotter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/blotter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/liquidDistortMaterial.min.js"></script>
     <script>
-        // Wait for the DOM to be fully loaded
         document.addEventListener("DOMContentLoaded", function () {
-            // Create a Blotter text element
+            // 1. Create the Blotter Text element with INCREASED padding
             var text = new Blotter.Text("Liquid Distort", {
                 family: "serif",
-                size: 120,
-                fill: "#ffffff",
-                paddingLeft: 40,
-                paddingRight: 40,
+                size: 120,          // Font size remains the same
+                fill: "#ffffff",    // Text color
+                // --- Increased padding values ---
+                paddingLeft: 80,    // Increased from 40
+                paddingRight: 80,   // Increased from 40
+                paddingTop: 80,     // Increased from 40
+                paddingBottom: 80   // Increased from 40
+                // --- Adjust these values as needed ---
             });
 
-            // Set up the Liquid Distort Material with custom parameters
+            // 2. Set up the Liquid Distort Material
             var material = new Blotter.LiquidDistortMaterial();
-            material.uniforms.uSpeed.value = 0.3;      // Speed of distortion animation
-            material.uniforms.uVolatility.value = 0.2;   // Intensity of the distortion
-            material.uniforms.uSeed.value = 0.1;         // Random seed for variation
 
-            // Create a Blotter instance with the text and material
+            // Store the 'active' values for the effect
+            const activeSpeed = 0.3;
+            const activeVolatility = 0.2; // The higher this value, the more padding you might need
+
+            // 3. Set initial uniform values (effect inactive)
+            material.uniforms.uSpeed.value = 0.0;
+            material.uniforms.uVolatility.value = 0.0;
+            material.uniforms.uSeed.value = 0.1;
+
+            // 4. Create a Blotter instance
             var blotter = new Blotter(material, { texts: text });
-            // Get a rendering scope and attach it to the DOM
+
+            // 5. Get the rendering scope and append it to the DOM
             var scope = blotter.forText(text);
             scope.appendTo(document.body);
+
+            // 6. Get the element Blotter renders to (the canvas)
+            var hoverElement = scope.domElement;
+
+            if (hoverElement) {
+                // 7. Add mouseenter event listener
+                hoverElement.addEventListener('mouseenter', function () {
+                    material.uniforms.uSpeed.value = activeSpeed;
+                    material.uniforms.uVolatility.value = activeVolatility;
+                });
+
+                // 8. Add mouseleave event listener
+                hoverElement.addEventListener('mouseleave', function () {
+                    material.uniforms.uSpeed.value = 0.0;
+                    material.uniforms.uVolatility.value = 0.0;
+                });
+            } else {
+                console.error("Blotter element not found for attaching hover events.");
+            }
         });
     </script>
 </body>
