@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #222a30;
+    /* Dark background */
+    color: #ffffff;
+    /* Default text color */
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    /* Prevent scrollbars */
+    display: flex;
+    /* Use flexbox for centering (optional) */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Style the main canvas container if needed */
+#canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* Place canvas behind other elements */
+}
+
+#video-container {
+    position: absolute;
+    /* Centering */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 640px;
+    /* Match video width */
+    height: 360px;
+    /* Match video height */
+    background-color: #000;
+    /* Black background for video area */
+    display: none;
+    /* Initially hidden */
+    z-index: 10;
+    /* Ensure video is above canvas */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+#html-video-player {
+    display: block;
+    /* Remove extra space below video */
+    width: 100%;
+    height: 100%;
+}
+
+#text-container {
+    position: absolute;
+    top: 25%;
+    /* Position text above center */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    /* Allow text to wrap */
+    max-width: 600px;
+    /* Limit text width */
+    text-align: center;
+    z-index: 5;
+    /* Above canvas, below video potentially */
+}
+
+#text-display {
+    font-size: 1.1em;
+    line-height: 1.5;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Slight background for readability */
+    border-radius: 5px;
+    display: none;
+    /* Initially hidden */
+}
+
+/* --- Button Styling (p5.dom buttons) --- */
+/* Buttons created with createButton() often get these classes */
+/* Or style them directly in JS */
+button {
+    /* Basic styling for all buttons */
+    padding: 12px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #4a5a6a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    /* Add some space between buttons */
+    position: absolute;
+    /* Crucial for JS positioning */
+    transform: translateX(-50%);
+    /* Center button horizontally */
+    transition: background-color 0.2s ease;
+    min-width: 100px;
+    /* Minimum button width */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #607080;
+}
+
+/* Specific positions will be set in sketch.js */

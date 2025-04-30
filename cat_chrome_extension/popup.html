@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather Extension</title>
+    <style>
+        /* Add some basic styling for the popup */
+        body {
+            font-family: sans-serif;
+            padding: 10px;
+            min-width: 250px;
+            /* Give the popup a minimum width */
+            text-align: center;
+            /* Center content horizontally */
+            /* Added styles to control height and prevent scrolling */
+            height: auto;
+            /* Allow body to size based on content */
+            overflow-y: hidden;
+            /* Hide vertical scrollbar if content overflows body */
+            margin: 0;
+            /* Remove default body margin */
+        }
+
+        h1 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            /* Add some space below the heading */
+        }
+
+        #gif-container img {
+            max-width: 100%;
+            /* Ensure the GIF fits within the container */
+            height: auto;
+            /* Maintain aspect ratio */
+            margin-bottom: 10px;
+            /* Space below the GIF */
+        }
+
+        #p5-container {
+            margin-top: 10px;
+            /* Space above the canvas */
+            display: flex;
+            /* Use flexbox to center the canvas */
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="random-sentence-heading">Loading Sentence...</h1>
+
+    <div id="gif-container">
+        <img id="random-gif" src="" alt="Random weather GIF">
+    </div>
+
+
+    <div id="p5-container">
+    </div>
+
+    <script src="p5.min.js"></script>
+    <script src="sketch.js"></script>
+</body>
+
+</html>

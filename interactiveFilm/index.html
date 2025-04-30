@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Film</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main id="canvas-container"></main>
+
+    <div id="video-container">
+        <video id="html-video-player" width="640" height="360" playsinline>
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div id="text-container">
+        <p id="text-display"></p>
+    </div>
+
+    <div id="button-container">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/addons/p5.dom.min.js"></script>
+
+    <script src="sketch.js"></script>
+</body>
+
+</html>

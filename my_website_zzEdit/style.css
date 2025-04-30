@@ -1,0 +1,13 @@
+    /* Remove default body margin and padding */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      /* Prevent scrollbars if content slightly exceeds view */
+    }
+
+    /* Ensure the canvas doesn't have extra display properties */
+    canvas {
+      display: block;
+      /* Important to remove a small gap below the canvas */
+    }
